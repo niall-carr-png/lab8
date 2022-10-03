@@ -22,7 +22,7 @@ class App extends React.Component {
     <Router>
       <div>
 
-      {/*some comment about my code*/}
+      {/*Combining the different components together*/}
     <div className="App">
       <Navbar bg="light">
         <Container>
