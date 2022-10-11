@@ -2,6 +2,7 @@ import React from "react";
 
 export class Create extends React.Component{
 
+    /* Defining create component*/   
     render(){
         return(
             <div>
