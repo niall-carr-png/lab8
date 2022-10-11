@@ -1,5 +1,6 @@
 import React from "react";
 
+/* Heading to precede the main component in the body of text */
 export class Header extends React.Component{
     render(){
         return(

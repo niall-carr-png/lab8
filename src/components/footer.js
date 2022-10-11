@@ -1,5 +1,6 @@
 import React from "react";
 
+/* A text component at the bottom of the page */
 export class Footer extends React.Component{
     render(){
         return(

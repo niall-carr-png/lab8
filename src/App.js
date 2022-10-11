@@ -7,6 +7,7 @@ import { Footer } from './components/footer';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter as Router,
@@ -15,6 +16,8 @@ import {
   Link,
   Routes
 } from "react-router-dom"
+import {Read} from './components/read';
+import {Create} from './components/create';
 
 class App extends React.Component {
   render(){
@@ -22,8 +25,9 @@ class App extends React.Component {
     <Router>
       <div>
 
-      {/*some comment about my code*/}
+      {/*Combining the different components together*/}
     <div className="App">
+       {/* Navigation retrieved from Bootstrap */}
       <Navbar bg="light">
         <Container>
           <Navbar.Brand href="/">Brand link</Navbar.Brand>
@@ -36,8 +40,8 @@ class App extends React.Component {
       </Navbar>
       <Routes>
         <Route path='/' element={<Content></Content>} exact></Route>
-        <Route path='/read' element={<Header />}></Route>
-        <Route path='/create' element={<Footer />}></Route>
+        <Route path='/read' element={<Read />}></Route>
+        <Route path='/create' element={<Create />}></Route>
       </Routes>
         {/* <Header></Header>
         <Content></Content>
