@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 
 export class Create extends React.Component{
@@ -95,3 +96,19 @@ export class Create extends React.Component{
     }
     
 }
+=======
+import React from "react";
+
+export class Create extends React.Component{
+
+    /* Defining create component*/   
+    render(){
+        return(
+            <div>
+                <h3>Hello from my Create component!</h3>
+            </div>
+        );
+    }
+    
+}
+>>>>>>> f4780dc9e271a79d3e3306af87d47193847356fa

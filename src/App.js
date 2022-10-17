@@ -27,7 +27,11 @@ class App extends React.Component {
 
       {/*Combining the different components together*/}
     <div className="App">
+<<<<<<< HEAD
        {/* Navigation retrieved from Bootstrap */}
+=======
+    {/* Navigation retrieved from Bootstrap */}
+>>>>>>> f4780dc9e271a79d3e3306af87d47193847356fa
       <Navbar bg="light">
         <Container>
           <Navbar.Brand href="/">Brand link</Navbar.Brand>
