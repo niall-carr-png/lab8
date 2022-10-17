@@ -1,12 +1,29 @@
 import React from "react";
 import { Books } from "./books";
+import axios from "axios";
 
 export class Read extends React.Component{
+
+    /* Retrieving the JSON blob */
+    componentDidMount() {
+        axios.get('https://jsonblob.com/api/jsonblob/1027219693823606784')
+        .then((response)=>{
+            this.setState({books:response.data})
+        })
+    .catch((error)=>{
+        /* Default error message */
+        console.log(error);
+    })
+
+    }
+
+
 
     /* The array to be displayed in read */
     state ={
         books: [
-            {
+        /* Book returned by JSON blob */
+        /*    {
             "title": "Learn Git in a Month of Lunches",
             "isbn": "1617292419",
             "pageCount": 0,
@@ -41,15 +58,17 @@ export class Read extends React.Component{
             "status": "MEAP",
             "authors": ["Simon Holmes"],
             "categories": []
-            }
+            } */
             ]
            
     }
 
+    /* Displayed HTML */
     render(){
         return(
             <div>
                 <h3>Hello from my Read component!</h3>
+                {/*JSON output in HTML*/}
                 <Books books={this.state.books}></Books>
             </div>
         );
