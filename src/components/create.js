@@ -1,9 +1,8 @@
-<<<<<<< HEAD
 import React from "react";
 
 export class Create extends React.Component{
 
-    // defining variables
+    // binding events to instances
     constructor(){
         super();
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -96,19 +95,4 @@ export class Create extends React.Component{
     }
     
 }
-=======
-import React from "react";
 
-export class Create extends React.Component{
-
-    /* Defining create component*/   
-    render(){
-        return(
-            <div>
-                <h3>Hello from my Create component!</h3>
-            </div>
-        );
-    }
-    
-}
->>>>>>> f4780dc9e271a79d3e3306af87d47193847356fa
