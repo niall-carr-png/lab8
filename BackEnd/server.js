@@ -20,10 +20,34 @@ res.header("Access-Control-Allow-Headers",
 next();
 });
 
+// getting-started.js
+const mongoose = require('mongoose');
 
-app.post('/api/books', (req, res) => {
+main().catch(err => console.log(err));
+
+async function main() {
+  await mongoose.connect('mongodb+srv://admin:admin@cluster0.rcvxh1j.mongodb.net/?retryWrites=true&w=majority');
+  
+  // use `await mongoose.connect('mongodb://user:password@localhost:27017/test');` if your database has auth enabled
+}
+
+const bookSchema = new mongoose.Schema({
+    title: String,
+    cover:String,
+    author:String
+  });
+
+
+const bookModel = mongoose.model('books', bookSchema);
+
+app.post('/api/books',(req, res) => {
     console.log(req.body); 
-    res.send('Book Added')
+    bookModel.create({
+        title:req.body.title,
+        cover:req.body.cover,
+        author:req.body.author
+    })
+    res.send('Data Received')
 })
 
 //Output for localhost landing page
@@ -32,48 +56,60 @@ app.get('/', (req, res) => {
 })
 
 app.get('/api/books', (req, res)=>{
-    const books = [
-        {
-        "title": "Learn Git in a Month of Lunches",
-        "isbn": "1617292419",
-        "pageCount": 0,
-        "thumbnailUrl":
-        "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/umali.jpg", "authors": ["Rick Umali"],
-        "categories": []
-        },
-        {
-        "title": "MongoDB in Action, Second Edition",
-        "isbn": "1617291609",
-        "pageCount": 0,
-        "thumbnailUrl":
-        "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/banker2.jpg",
-        "status": "MEAP",
-        "authors": [
-        "Kyle Banker",
-        "Peter Bakkum",
-        "Tim Hawkins",
-        "Shaun Verch",
-        "Douglas Garrett"
-        ],
-        "categories": []
-        },
-        {
-        "title": "Getting MEAN with Mongo, Express, Angular, and Node",
-        "isbn": "1617292036",
-        "pageCount": 0,
-        "thumbnailUrl":
-        "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/sholmes.jpg",
-        "status": "MEAP",
-        "authors": ["Simon Holmes"],
-        "categories": []
-        }
-        ]
-        res.status(200).json({
-            myBooks:books
-        })
+    // const books = [
+        // {
+        // "title": "Learn Git in a Month of Lunches",
+        // "isbn": "1617292419",
+        // "pageCount": 0,
+        // "thumbnailUrl":
+        // "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/umali.jpg", "authors": ["Rick Umali"],
+        // "categories": []
+        // },
+        // {
+        // "title": "MongoDB in Action, Second Edition",
+        // "isbn": "1617291609",
+        // "pageCount": 0,
+        // "thumbnailUrl":
+        // "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/banker2.jpg",
+        // "status": "MEAP",
+        // "authors": [
+        // "Kyle Banker",
+        // "Peter Bakkum",
+        // "Tim Hawkins",
+        // "Shaun Verch",
+        // "Douglas Garrett"
+        // ],
+        // "categories": []
+        // },
+        // {
+        // "title": "Getting MEAN with Mongo, Express, Angular, and Node",
+        // "isbn": "1617292036",
+        // "pageCount": 0,
+        // "thumbnailUrl":
+        // "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/sholmes.jpg",
+        // "status": "MEAP",
+        // "authors": ["Simon Holmes"],
+        // "categories": []
+        // }
+        // ]
+        // res.status(200).json({
+        //     myBooks:books
+        // })
+
+    bookModel.find((err,data)=> {
+        console.log(data);
+        res.json(data);
+    })
+})
+
+app.get('/api/book/:id',(req,res)=>{
+    console.log(req.params.id);
+    bookModel.findById(req.params.id,(err,data)=>{
+        res.json(data);
+    })
 })
 
 //Message for running on terminal
 app.listen(port, () => {
-    console.log('Example app listening on port ${port}')
+    console.log(`Example app listening on port ${port}`)
 })
