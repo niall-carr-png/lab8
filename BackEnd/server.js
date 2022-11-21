@@ -109,6 +109,15 @@ app.get('/api/book/:id',(req,res)=>{
     })
 })
 
+//Listen for HTTP request that has HTTP put method
+app.put('/api/book/:id',(req,res)=>{
+    console.log("Update "+req.params.id);
+
+    bookModel.findByIdAndUpdate(req.params.id,req.body,{new: true},(error, data)=>{
+        res.send(data);
+    })
+})
+
 //Message for running on terminal
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)

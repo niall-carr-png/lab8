@@ -6,9 +6,9 @@ export class Read extends React.Component{
 
     /* Retrieving the JSON blob */
     componentDidMount() {
-        axios.get('https://localhost:4000/api/books')
+        axios.get('http://localhost:4000/api/books')
         .then((response)=>{
-            this.setState({books:response.data.myBooks})
+            this.setState({books:response.data})
         })
     .catch((error)=>{
         /* Default error message */
