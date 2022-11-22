@@ -34,6 +34,7 @@ class App extends React.Component {
         <Container>
           <Navbar.Brand href="/">Brand link</Navbar.Brand>
           <Nav className="me-auto">
+            {/* Links to other pages */}
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/read">Read</Nav.Link>
             <Nav.Link href="/create">Create</Nav.Link>
@@ -41,6 +42,7 @@ class App extends React.Component {
         </Container>
       </Navbar>
       <Routes>
+        {/* Connection of components to app.js */}
         <Route path='/' element={<Content></Content>} exact></Route>
         <Route path='/read' element={<Read></Read>}></Route>
         <Route path='/create' element={<Create></Create>}></Route>
