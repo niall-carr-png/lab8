@@ -22,6 +22,7 @@ export class BookItem extends React.Component{
                         </blockquote>
                     </Card.Body>
 
+                    /* Link to edit button for each item in array */
                     <Link to={"/edit/"+this.props.book._id} className="btn btn-primary">Edit</Link>
 
                 </Card>
