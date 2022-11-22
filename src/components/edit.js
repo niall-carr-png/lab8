@@ -39,6 +39,7 @@ axios.get('http://localhost:4000/api/book/' + id)
         cover: cover,
         author: author
     };
+    // Defines the appropriate port number
     axios.put('http://localhost:4000/api/book/' + id, newBook)
     .then((res) => {
     console.log(res.data);
@@ -46,6 +47,7 @@ axios.get('http://localhost:4000/api/book/' + id)
     });
     }
     return (
+    // Returns the new information (e.g. title, cover, author) back to the read page and component
     <div>
     <form onSubmit={handleSubmit}>
     <div className="form-group">
